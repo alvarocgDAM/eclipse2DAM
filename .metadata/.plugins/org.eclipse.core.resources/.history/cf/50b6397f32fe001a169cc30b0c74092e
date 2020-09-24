@@ -1,0 +1,48 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class main {
+	
+
+	public static void main(String[] args) {
+		
+		FileReader archivo = null;
+		ArrayList<Empleado> arrayEmpleados = new ArrayList<Empleado>();
+		String linea = null;
+		
+		try {
+			archivo = new FileReader("empleados.txt");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		BufferedReader lector = new BufferedReader(archivo);
+		try {
+			linea = lector.readLine();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		while (linea != null) {
+			
+			try {
+				linea = lector.readLine();
+				String[] serializadaString = linea.split(",");
+				
+				String miEmpresa = serializadaString[0];
+				String miEdad = serializadaString[1];
+				String miNum_empleados = serializadaString[2];
+				
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+
+	}
+
+}

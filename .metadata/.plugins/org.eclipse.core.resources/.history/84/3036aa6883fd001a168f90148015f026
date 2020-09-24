@@ -1,0 +1,22 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
+public class main {
+	
+	protected FileReader archivo;
+
+	public static void main(String[] args) {
+		
+		try {
+			archivo = new FileReader("empleados.txt");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		BufferedReader lector = new BufferedReader(archivo);
+		lector.readLine();
+
+	}
+
+}

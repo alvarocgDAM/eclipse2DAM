@@ -1,0 +1,75 @@
+import java.io.FileWriter;
+import java.util.ArrayList;
+
+public class Empleado {
+
+	protected String empresa;
+	protected String edad;
+	protected String num_empleados;	
+	
+	public Empleado(String nEmpresa, String nEdad, String nNum_empleados) {
+		this.empresa = nEmpresa;
+		this.edad = nEdad;
+		this.num_empleados = nNum_empleados;
+	}
+	
+	public Empleado(String lineaTexto) {
+		
+		String[] lineaTextoSplit = lineaTexto.split(",");
+		
+		String miEmpresa = lineaTextoSplit[0];
+		String miEdad = lineaTextoSplit[1];
+		String miNum_empleados = lineaTextoSplit[2];
+		
+		new Empleado(miEmpresa,miEdad,miNum_empleados);
+		
+	}
+	
+	
+	
+	
+	public String toString() {
+		return "Empresa: " + empresa + "\n Edad: " + edad + "\n Número de empleados: " + num_empleados;
+	}
+
+
+	public void toArrayEmpleados(ArrayList<Empleado> arrayEmpleados) {
+		
+		FileWriter archivo = new FileWriter("empleadosSave.txt");
+	
+		BufferedWriter escritor = new BufferedWriter(archivo);
+		escritor.write();
+		
+	}
+	
+	
+	
+	
+	
+	
+
+	public String getEmpresa() {
+		return empresa;
+	}
+	
+	public void setEmpresa(String empresa) {
+		this.empresa = empresa;
+	}
+	
+	public String getEdad() {
+		return edad;
+	}
+	
+	public void setEdad(String edad) {
+		this.edad = edad;
+	}
+	
+	public String getNum_empleados() {
+		return num_empleados;
+	}
+	
+	public void setNum_empleados(String num_empleados) {
+		this.num_empleados = num_empleados;
+	}
+	
+}

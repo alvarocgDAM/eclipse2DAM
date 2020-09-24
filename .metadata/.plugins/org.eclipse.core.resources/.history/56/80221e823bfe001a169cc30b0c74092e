@@ -1,0 +1,107 @@
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class Empleado {
+
+	protected String empresa;
+	protected String edad;
+	protected String num_empleados;	
+	
+	public static final String FICHERO_EMPLEADOS_SAVE = "empleadosSave.txt";
+	public static final String FICHERO_EMPLEADOS_BIN= "empleadosBin.txt";
+
+	
+	public Empleado(String nEmpresa, String nEdad, String nNum_empleados) {
+		this.empresa = nEmpresa;
+		this.edad = nEdad;
+		this.num_empleados = nNum_empleados;
+	}
+	
+	public Empleado(String lineaTexto) {
+		
+		String[] lineaTextoSplit = lineaTexto.split(",");
+		
+		String miEmpresa = lineaTextoSplit[0];
+		String miEdad = lineaTextoSplit[1];
+		String miNum_empleados = lineaTextoSplit[2];
+		
+		new Empleado(miEmpresa,miEdad,miNum_empleados);
+		
+	}
+	
+	
+	
+	
+	public String toString() {
+		return "Empresa: " + empresa + "\n Edad: " + edad + "\n Número de empleados: " + num_empleados + "\n";
+	}
+
+
+	public void toArrayEmpleados(ArrayList<Empleado> arrayEmpleados) {
+		
+		FileWriter archivo = null;
+		try {
+			
+			archivo = new FileWriter(FICHERO_EMPLEADOS_SAVE);
+			
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	
+		BufferedWriter escritor = new BufferedWriter(archivo);
+		
+		for (Empleado empleado : arrayEmpleados) {
+			
+			try {
+				escritor.write(empleado.toString());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+	}
+	
+	public void toArrayEmpleadosInverso() {
+		
+		FileOutputStream archivo = new FileOutputStream(FICHERO_EMPLEADOS_BIN);
+		
+		ObjectOutputStream escritor = new ObjectOutputStream(archivo);
+		escritor.writeObject(unObjeto);
+		
+	}
+	
+	
+	
+	
+	
+	
+
+	public String getEmpresa() {
+		return empresa;
+	}
+	
+	public void setEmpresa(String empresa) {
+		this.empresa = empresa;
+	}
+	
+	public String getEdad() {
+		return edad;
+	}
+	
+	public void setEdad(String edad) {
+		this.edad = edad;
+	}
+	
+	public String getNum_empleados() {
+		return num_empleados;
+	}
+	
+	public void setNum_empleados(String num_empleados) {
+		this.num_empleados = num_empleados;
+	}
+	
+}
